@@ -1,4 +1,5 @@
 from configparser import ConfigParser
+import psycopg2
 
 def config(filename="database.ini", section="postgresql"):
     # Create parser
@@ -18,3 +19,55 @@ def config(filename="database.ini", section="postgresql"):
     
     print("Database configuration parameters:", db)  # Debug print
     return db
+
+def connect():
+    try:
+        # Read connection parameters
+        params = config()
+        
+        # Connect to the PostgreSQL server
+        print('Connecting to the PostgreSQL database...')
+        connection = psycopg2.connect(**params)
+        
+        # Create a cursor
+        cursor = connection.cursor()
+        
+        # Execute a statement
+        print('PostgreSQL database version:')
+        cursor.execute('SELECT version()')
+        
+        # Display the PostgreSQL database server version
+        db_version = cursor.fetchone()
+        print(db_version)
+        
+        # Keeping the connection open
+        print("Database connection is open. You can now perform database operations.")
+        
+        return connection, cursor
+    
+    except Exception as error:
+        print(f"Error: {error}")
+        if connection is not None:
+            connection.close()
+            print("Database connection closed.")
+
+# Run the connect function and keep the connection open
+connection, cursor = connect()
+
+# You can perform further database operations here
+# For example, fetching data from a table
+# Replace 'your_table_name' with your actual table name
+try:
+    cursor.execute('SELECT * FROM ucccollegerepository')
+    rows = cursor.fetchall()
+    print("Data from ucccollegerepository:")
+    for row in rows:
+        print(row)
+except Exception as error:
+    print(f"Error while fetching data: {error}")
+
+# Note: The connection and cursor will remain open until you explicitly close them
+# To close them, use the following lines:
+# cursor.close()
+# connection.close()
+# print("Database connection closed.")
