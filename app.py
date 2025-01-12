@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, jsonify, render_template
 import psycopg2
 from configparser import ConfigParser
 
@@ -17,8 +17,8 @@ def config(filename="database.ini", section="postgresql"):
     return db
 
 def connect():
-    connection = None  # Initialize the connection variable
-    cursor = None  # Initialize the cursor variable
+    connection = None
+    cursor = None
     try:
         params = config()
         print('Connecting to the PostgreSQL database...')
@@ -35,39 +35,56 @@ def connect():
         if connection is not None:
             connection.close()
             print("Database connection closed.")
-        return None, None  # Return None if there's an error
+        return None, None
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    student_number = request.form['studentNumber']
-    student_name = request.form['studentName']
-    email = request.form['email']
-    phone = request.form['phone']
-    home_address = request.form['homeAddress']
-    
+@app.route('/students', methods=['POST'])
+def add_student():
+    data = request.json
+    student_number = data.get('student_number')
+    student_name = data.get('student_name')
+    email = data.get('email')
+    phone = data.get('phone')
+    home_address = data.get('home_address')
+
     connection, cursor = connect()
     if connection is None or cursor is None:
-        return "Database connection failed."
-    
+        return jsonify({"error": "Database connection failed."}), 500
+
     try:
         cursor.execute(
             "INSERT INTO ucccollegerepository (student_number, student_name, email_address, phone_number, home_address) VALUES (%s, %s, %s, %s, %s)",
             (student_number, student_name, email, phone, home_address)
         )
         connection.commit()
-        return f"Data submitted: {student_number}, {student_name}, {email}, {phone}, {home_address}"
+        return jsonify({"message": "Added successfully!"}), 201
     except Exception as error:
-        return f"Error while inserting data: {error}"
+        connection.rollback()
+        return jsonify({"error": str(error)}), 400
     finally:
         if cursor is not None:
             cursor.close()
         if connection is not None:
             connection.close()
-        print("Database connection closed.")
+
+@app.route('/students', methods=['GET'])
+def get_students():
+    connection, cursor = connect()
+    if connection is None or cursor is None:
+        return jsonify({"error": "Database connection failed."}), 500
+    
+    try:
+        cursor.execute("SELECT * FROM ucccollegerepository ORDER BY student_name ASC")
+        students = cursor.fetchall()
+        return jsonify(students)
+    finally:
+        cursor.close()
+        connection.close()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    from waitress import serve
+    print("Serving Flask app on http://0.0.0.0:5000 or http://localhost:5000")
+    serve(app, host='0.0.0.0', port=5000)
