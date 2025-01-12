@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 import psycopg2
 from configparser import ConfigParser
 
 app = Flask(__name__)
+CORS(app)
 
 def config(filename="database.ini", section="postgresql"):
     parser = ConfigParser()
@@ -86,5 +88,12 @@ def get_students():
 
 if __name__ == '__main__':
     from waitress import serve
-    print("Serving Flask app on http://0.0.0.0:5000 or http://localhost:5000")
-    serve(app, host='0.0.0.0', port=5000)
+    import socket
+
+    hostname = socket.gethostname()
+    host_ip = socket.gethostbyname(hostname)
+    port = 5000
+
+    print(f"Serving Flask app on http://{host_ip}:{port} (accessible locally and from other devices on the same network)")
+    serve(app, host='0.0.0.0', port=port)
+
