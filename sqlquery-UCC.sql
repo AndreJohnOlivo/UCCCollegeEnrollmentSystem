@@ -17,9 +17,9 @@ COMMENT ON TABLE public."UCCCollegeDept"
 CREATE TABLE UCCCollegeRepository (
     student_number SERIAL UNIQUE,   -- Unique key for the student number
     email_address VARCHAR(255) PRIMARY KEY,   -- Primary key for the email address
-    student_name VARCHAR(100),
-    phone_number VARCHAR(20),
-    home_address TEXT,
+    student_name VARCHAR(100) UNIQUE,
+    phone_number VARCHAR(20) UNIQUE,
+    home_address TEXT UNIQUE,
     subject_1 VARCHAR(100),
     subject_2 VARCHAR(100),
     subject_3 VARCHAR(100),
