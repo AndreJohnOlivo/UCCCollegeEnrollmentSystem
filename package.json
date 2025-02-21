@@ -1,0 +1,14 @@
+{
+    "name": "my_project",
+    "version": "1.0.0",
+    "description": "A simple web application with a PostgreSQL connection",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "pg": "^8.6.0"
+    }
+}
+  
