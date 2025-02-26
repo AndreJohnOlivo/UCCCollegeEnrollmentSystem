@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unida Christian Colleges Enrollment</title>
+    <link rel="icon" type="image/png" href="ucc.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="scriptsheet" href="script.js">
+
+<style>
+* {
+   box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  height: 100%;
+  background: url(UCC2.jpg) no-repeat center fixed; 
+  background-size: cover;
+  background-image: 250px;
+
+}
+  
+.container img  {
+  height: 60px;
+  align-self: center;
+  flex-direction: column;
+}
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+p {
+  text-align: center;
+  color: #666;
+    margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+    color: #337ab7;
+}
+
+a:hover {
+    color: #23527c;
+}
+
+/* Header Styles */
+
+header {
+  display: flex;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.container {
+  margin: 40px auto;
+  padding: 20px;  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ffffff; border: 1px solid #ddd;
+  max-width: 100% 700px;
+  padding: 30px;
+  width: 500px;
+  border-radius: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35) ;
+  box-sizing: border-box;
+  opacity: 0.9;
+}
+
+
+.form-container {
+  padding: 20px;
+}
+
+/* Form Styles */
+#submission-of-requirements-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="file"] {
+  padding: 10px;
+  border: 1px solid#ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+input[type="file"]:focus {
+  border-color: #337ab7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.camscanner-link {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.camscanner-link a {
+  font-size: 16px;
+  color: #337ab7;
+}
+
+.camscanner-link a:hover {
+  color: #23527c;
+}
+
+.camscanner-link i {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #337ab7;
+}
+
+.camscanner-link i:hover {
+  color: #23527c;
+}
+
+.form p {
+  color: darkgrey;
+  font-size: small;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background:dodgerblue;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+button:hover {
+  background: dodgerblue;
+}
+
+button > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover svg {
+  transform: translateX(5px);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .container {
+  max-width: 90%;
+}
+.form-group {
+  flex-direction: column;
+}
+label {
+  margin-bottom: 5px;
+}
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+}
+
+.form-group {
+  flex-direction: column;
+}
+label {
+  margin-bottom: 5px;
+}
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+}
+
+#file-input {
+  width: 350px;
+  max-width: 100%;
+  color: #444;
+  padding: 2px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(8, 8, 8, 0.288);
+}
+
+#file-input::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+#file-input::file-selector-button:hover {
+  background: #0d45a5;
+}
+}
+</style>
+  
+<script>
+
+  function handleButtonClick() {
+    window.location.href = 'courses.html'; 
+  }
+  function checkRequiredFiles() {
+    const requiredFilesSelected = [
+        document.querySelector('#form-137').files.length > 0,
+        document.querySelector('#psa-birth-certificate').files.length > 0,
+        document.querySelector('#good-moral').files.length > 0,
+        document.querySelector('#transferee').checked ? document.querySelector('#honorable-dismissal').files.length > 0 : true,
+    ].every((selected) => selected);
+
+    const nextButton = document.querySelector('#next-button');
+
+    if (requiredFilesSelected) {
+        nextButton.disabled = false;
+    } else {
+        nextButton.disabled = true;
+    }
+  }
+            
+
+</script>
+    <div class="container" id="container">
+        <div class="form-container">
+            <form id="submission-of-requirements-form">
+              <h1>SUBMISSION OF REQUIREMENTS</h1>
+                <img src="UCC COLLEGE DEPARTMENT.png" alt="UCC">
+                <p> To all New Students, kindly submit all your requirements for ease & smooth transaction. 
+                    For more accurate in sending your files use CamScanner.</p>
+                <p>For the Old Students, just submit your Form 137 just proceed to the next process. Thank you!</p>
+                <a rel="icon" href="https://play.google.com/store/apps/details?id=com.intsig.camscanner&hl=en">CamScanner</a>
+
+                <form action="processor_image.php" method="POST" enctype="multipart/form-data">
+                  <label for="form137">Form 137:</label>
+                  <input type="file" name="form137" id="file-input" accept="image/jpeg, image/png, image/gif" required>
+                  <br><br>
+          
+                  <label for="psa">PSA/Birth Certificate:</label>
+                  <input type="file" name="psa" id="file-input" accept="image/jpeg, image/png, image/gif" required>
+                  <br><br>
+          
+                  <label for="goodMoral">Good Moral:</label>
+                  <input type="file" name="goodMoral" id="file-input" accept="image/jpeg, image/png, image/gif" required>
+                  <br><br>
+          
+                  <label for="honorableDismissal">Honorable Dismissal:</label>
+                  <input type="file" name="honorableDismissal" id="file-input" accept="image/jpeg, image/png, image/gif" required>
+                  <br><br>
+          
+                <button type="button" id="next-button" class="button" onclick="handleButtonClick()">
+                <span>Continue</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 74 74"
+                    height="34"
+                    width="34"
+                    >
+                    <circle stroke-width="3" stroke="black" r="35.5" cy="37" cx="37"></circle>
+                    <path
+                      fill="black"
+                      d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"
+                    ></path>
+                  </svg>
+                </button>
+                
+
+            </form>
+        </div>
+    </div>
+    </body>
+    
+</html>
+      
+

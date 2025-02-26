@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unida Christian Colleges Enrollment</title>
+    <link rel="icon" type="image/png" href="ucc.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <form id="enrollment-form">
+  <img src="UNIDA CHRISTIAN COLLEGES.png" alt="UCC">
+    <h1>Bachelor of Science in Computer Science</h1>
+    <p>Effective AY 2024-2025</p>
+    <style>
+    
+      
+      .container {
+        max-width: 700px;
+        width: 100%;
+        background: #ffffff;
+        overflow: scroll;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        display: flex;
+        opacity: 0.9;
+    }
+       .container img {
+            display: block;
+            height: 80px;
+            display: flex;
+            align-self: center;
+            flex-direction: center;
+            margin-bottom: 40px;
+            margin: 0 auto 20px
+            
+            
+        }
+        body {
+            margin-top: 0 auto ;
+            font-family: Arial, sans-serif;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 300vh;
+            background: url(UCC2.jpg) no-repeat center fixed;
+            background-size: cover;
+        }
+        p {
+            text-align: center;
+            color: grey;
+        }
+        table {
+            font-family: Arial, sans-serif;
+            border: 1 px solid dodgerblue;
+            background-color: white;
+            border-collapse: collapse;
+            width: 80%;
+            margin: 40px;
+            opacity: 0.9;
+        }
+        td, th {
+            border: 1px solid green;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        h1{
+          text-align: center;
+          color: rgb(0, 102, 0);
+          font-family: Bell MT;
+        }
+        h2, h3 {
+            text-align: center;
+            color: black;
+            font-family: Bell MT;
+        }
+        button {
+            display:block;
+            margin: 0 auto 20px;
+            border: 1px;
+            width: 100px;
+            height: fit-content;
+            background: goldenrod;
+            border-radius: 10px;
+            font-size:medium;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+        }
+        #popover {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+        #popover button {
+            margin: 0 10px;
+        }
+    </style>
+
+    <table>
+        <h2>THIRD YEAR</h2>
+        <h3>1st Semester</h3>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Title</th>
+            <th>Units</th>
+            <th>Take</th>
+        </tr>
+        <tr>
+            <td>CS DS 101</td>
+            <td>Discrete Structure 1</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS NC 101</td>
+            <td>Networks and Communications 1</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS PL 101</td>
+            <td>Programming Languages</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS SE 101</td>
+            <td>Software Engineering 1</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS NET 101</td>
+            <td>Networking 1</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS SP 101</td>
+            <td>Social Issues and Professional Practice</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS AR 102</td>
+            <td>Architecture and Organization</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td><b>TOTAL</b></td>
+            <td></td>
+            <td><b>21</b></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <table>
+        <h3>2nd Semester</h3>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Title</th>
+            <th>Units</th>
+            <th>Take</th>
+        </tr>
+        <tr>
+            <td>CS DS 102</td>
+            <td>Discrete Structure 2</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS NC 102</td>
+            <td>Networks and Communications 2</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS AL 102</td>
+            <td>Automata Theory and Formal Languages</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS DC 101</td>
+            <td>Differential Calculus</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS SE 102</td>
+            <td>Software Engineering 2</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS NET 102</td>
+            <td>Networking 2</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS THS 102</td>
+            <td>Thesis Writing 1</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td><b>TOTAL</b></td>
+            <td></td>
+            <td><b>21</b></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <button onclick="confirmSubmit()">Submit</button>
+
+    <script>
+        function confirmSubmit() {
+            const confirmation = confirm('Are you sure you want to submit?');
+            if (confirmation) {
+                alert('Form submitted successfully!');
+            }
+        }
+    </script>
+</body>
+</html>

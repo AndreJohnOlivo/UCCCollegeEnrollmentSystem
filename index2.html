@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unida Christian Colleges Enrollment</title>
+    <link rel="icon" type="image/png" href="ucc.png">
+
+    <style>
+        body {
+            background: url(UNIDA.jpg) no-repeat center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #ffffff;
+            overflow: scroll;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0.9;
+        }
+        input, select {
+            font-family: Arial, sans-serif;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid dodgerblue;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fafafa;
+        }
+        input:focus, select:focus {
+            font-family: Arial, sans-serif;
+            outline: none;
+            border-color: dodgerblue;
+            box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
+        }
+        img {
+            display: block;
+            margin: 0 auto 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        h1 {
+            color: rgb(0, 102, 0);
+        }
+        h2 {
+            color: rgb(204, 151, 16);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: center;
+            width: 100%;
+            padding: 10px 15px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .button:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="enrollment-form">
+            <img src="UNIDA CHRISTIAN COLLEGES.png" alt="UCC">
+            <h1>COLLEGE ENROLLMENT</h1>
+            <h2>Dream High, Aim High, Ambassador!</h2>
+
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="middle-name">Middle Name</label>
+                <input type="text" id="middle-name" placeholder="Middle Name">
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname</label>
+                <input type="text" id="surname" placeholder="Surname" required>
+            </div>
+            <div class="form-group">
+                <label for="suffix">Suffix (Optional)</label>
+                <input type="text" id="suffix" placeholder="Suffix">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="Phone Number" required maxlength="11">
+                <small id="phone-error" style="color: red; display: none;">Phone number must start with "09" and have exactly 11 digits.</small>
+            </div>
+            <div class="form-group">
+                <label for="home-address">Home Address</label>
+                <input type="text" id="home-address" placeholder="Home Address" required>
+            </div>
+            <div class="form-group">
+                <label for="sex">Sex at Birth</label>
+                <select id="sex" required>
+                    <option value="">Choose your sex at birth</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="civil-status">Civil Status</label>
+                <select id="civil-status" required>
+                    <option value="">Choose your civil status</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="student-type">Student Type</label>
+                <select id="student-type" required>
+                    <option value="">Choose Student Type</option>
+                    <option value="New Student">New Student</option>
+                    <option value="Transferee">Transferee</option>
+                    <option value="Old Student">Old Student</option>
+                </select>
+            </div>
+
+            <button type="button" id="next-button" class="button" disabled>Next</button>
+        </form>
+    </div>
+
+    <script>
+        const formFields = [
+            document.getElementById('first-name'),
+            document.getElementById('surname'),
+            document.getElementById('dob'),
+            document.getElementById('phone'),
+            document.getElementById('home-address'),
+            document.getElementById('sex'),
+            document.getElementById('civil-status'),
+            document.getElementById('student-type')
+        ];
+        const phoneInput = document.getElementById('phone');
+        const phoneError = document.getElementById('phone-error');
+        const nextButton = document.getElementById('next-button');
+        const studentTypeSelect = document.getElementById('student-type');
+
+        // Validate phone number
+        phoneInput.addEventListener('input', () => {
+            phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
+            if (phoneInput.value.length > 11) phoneInput.value = phoneInput.value.slice(0, 11);
+            phoneError.style.display = 'none';
+        });
+
+        phoneInput.addEventListener('blur', () => {
+            const isValid = /^09\d{9}$/.test(phoneInput.value);
+            phoneError.style.display = isValid ? 'none' : 'block';
+            phoneInput.style.borderColor = isValid ? '' : 'red';
+            validateForm();
+        });
+
+        // Validate form
+        function validateForm() {
+            const isFormValid = formFields.every(field => field.value.trim() !== '') && /^09\d{9}$/.test(phoneInput.value);
+            nextButton.disabled = !isFormValid;
+        }
+
+        formFields.forEach(field => field.addEventListener('input', validateForm));
+
+        // Handle next button click
+        nextButton.addEventListener('click', () => {
+            const studentType = studentTypeSelect.value;
+            if (studentType === 'Transferee') {
+                alert('Please visit the College Department for guidance and an interview.');
+            } else if (studentType === 'New Student') {
+                window.location.href = 'requirements.html';
+            } else {
+                window.location.href = 'requirements.html';
+            }
+        });
+    </script>
+</body>
+</html>

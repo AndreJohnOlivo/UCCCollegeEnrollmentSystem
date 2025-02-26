@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unida Christian Colleges Enrollment</title>
+    <link rel="icon" type="image/png" href="ucc.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"><style>
+    
+* {
+   box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: center;
+  height: 100vh;
+  height: 100%;
+  background: url(UCC2.jpg) no-repeat center fixed; 
+  background-size: cover;
+  background-image: 250px;
+
+}
+
+p {
+  text-align: column;
+  color: #666;
+    margin-bottom: 20px;
+}
+  
+  header {
+    display: flex;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+  }
+  
+  .container {
+    margin: 40px auto;
+    padding: 20px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffffff; border: 1px solid #ddd;
+    max-width: 100% 700px;
+    padding: 30px;
+    width: 500px;
+    border-radius: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35) ;
+    box-sizing: border-box;
+    opacity: 0.9;
+  }
+  
+  
+  .form-container {
+    padding: 20px;
+  }
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.data-privacy {
+    margin-top: 20px;
+}
+
+.data-privacy h2 {
+    margin-bottom: 10px;
+}
+
+.data-privacy p {
+    margin-bottom: 10px;
+}
+
+.data-privacy input[type="checkbox"] {
+    margin-right: 10px;
+}
+.button {
+    background-color: dodgerblue;
+    
+}
+.container button{
+  border: 1px;
+  width: 100px;
+  height: fit-content;
+  border-radius: 10px ;
+  margin-top: 20px;
+  gap: 5px;
+  padding: 10px;
+  align-items: center;
+  display: center;
+  flex-direction: center;
+  color: white;
+}
+
+  </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>UCC College Enrollment </h1>
+
+        <div class="data-privacy">
+            <h2>Data Privacy</h2>
+            <p>
+                1. I hereby authorize UNIDA CHRISTIAN COLLEGES to collect, use, process, and share, in accordance with the Data Privacy Act of 2012, any personal and sensitive information I have provided upon registration and enrollment to the college for any college-related processes and researches, provided that my anonymity is kept confidential. 
+            </p>
+            <input type="checkbox" id="agree1">
+            <label for="agree1">I agree</label>
+            <br>
+
+            <p>
+                2. I hereby give my consent to Unida Christian Colleges for the collection and processing my personal data, relating to my application for admission,
+                   in accordance with the UCC Data Privacy notice for College Enrollment for Admission to Unida Christian Colleges, 
+                   and in compliance with Republic Act 10173 or the Data Privacy Act of 2012 of the Republic of the Philippines, it's implementing Rules and Regulations, 
+                   other guidelines and issuances by the National Privacy Commission.
+            </p>
+            <input type="checkbox" id="agree1">
+            <label for="agree1">I agree</label>
+            <br>
+            <button type="button" id="next-button" class="button" onclick="handleButtonClick()">Done</button>
+          </body>           
+<script>
+    function handleButtonClick() {
+        window.location.href = 'index.html'; 
+    }
+</script>

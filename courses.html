@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unida Christian Colleges Enrollment</title>
+    <link rel="icon" type="image/png" href="ucc.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;  
+}
+
+.container img  {
+    height: 60px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+.container input{
+    background:dodgerblue (255, 255, 255, 0.3);
+
+    
+}
+.form-container h1{
+    justify-content: center;
+        font-family: Bell MT;
+        margin: 20px;
+}
+
+.container {
+    
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35) ;
+        box-sizing: border-box;
+        padding: 30px;
+        width: 90%;
+        max-width: 600px;
+        opacity: 0.9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+      }
+      .form-group {
+          margin-bottom: 15px;
+      }
+
+      
+      .container form-group input, .form-group select{
+          margin-bottom: 10px;
+          width: 100%;
+          padding: 10px;
+          border-radius: 10px;
+          border: 1px solid dodgerblue;
+          text-align: center; 
+      
+    
+      }
+      body {
+          font-family: Arial, sans-serif;
+          background: linear-gradient(to right, #e2e2e2, #9cfecd);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+          background: url('UNIDA.jpg') no-repeat center fixed;
+          background-size: cover;
+      }
+      .container p {
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0.3px;
+          margin: 5px 0;
+      }
+          h1 {
+              text-align: center;
+              color: #333;
+              margin-bottom: 5px;
+          }
+          
+          p {
+            color: #666;
+              margin-bottom: 20px;
+      }
+      .form {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          background-color: dodgerblue;
+          padding: 30px;
+          width: 450px;
+          border-radius: 20px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        
+      }
+      button {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 21px;
+        background:rgb(204, 151, 16);
+        text-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.2);
+        padding: 10px 15pX;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+
+        box-shadow:
+            0px 4px 12px rgba(9, 12, 60, 0.15),
+            0px 2px 8px rgba(9, 12, 60, 0.15),
+            0px 1px 3px var(--fancy-button-inner-shadow-top-lg),
+            inset 0px 1px 1px var(--fancy-button-inner-shadow-top),
+            inset 0px -1px 3px var(--fancy-button-inner-shadow-bottom);
+        margin: 20px auto; 
+        display: block; 
+      }
+      button:hover {
+        background:  rgb(0, 102, 0);
+      }
+      
+      button > svg {
+        width: 34px;
+        margin-left: 10px;
+        transition: transform 0.3s ease-in-out;
+      }
+      
+      button:hover svg {
+        transform: translateX(5px);
+      }
+      
+      button:active {
+        transform: scale(0.95);
+      }
+          
+</style>
+
+
+      
+<script>
+  function handleSubmit() {
+      
+      const program = document.getElementById("course").value;
+      const yearLevel = document.getElementById("year-level").value;
+      
+    
+      if (!program || !yearLevel) {
+          alert("Please select both program and year level.");
+          return; 
+      }
+
+ 
+      const urls = {
+          'BSCS': {
+              '1st Year': 'bscs1.html',
+              '2nd Year': 'bscs2.html',
+              '3rd Year': 'bscs3.html',
+              '4th Year': 'bscs4.html',
+          },
+          'ACT': {
+              '1st Year': 'act1.html',
+              '2nd Year': 'act2.html',
+              '3rd Year': 'act3.html',
+              '4th Year': 'act4.html',
+          },
+          'BSBAHRM': {
+              '1st Year': 'bsbahrm1.html',
+              '2nd Year': 'bsbahrm2.html',
+              '3rd Year': 'bsbahrm3.html',
+              '4th Year': 'bsbahrm4.html',
+          },
+          'BSBAOM': {
+              '1st Year': 'bsbaom1.html',
+              '2nd Year': 'bsbaom2.html',
+              '3rd Year': 'bsbaom3.html',
+              '4th Year': 'bsbaom4.html',
+          },
+          'BEED': {
+              '1st Year': 'beed1.html',
+              '2nd Year': 'beed2.html',
+              '3rd Year': 'beed3.html',
+              '4th Year': 'beed4.html',
+          },
+          'BSEDSS': {
+              '1st Year': 'bsedss1.html',
+              '2nd Year': 'bsedss2.html',
+              '3rd Year': 'bsedss3.html',
+              '4th Year': 'bsedss4.html',
+          },
+          'BSEDEnglish': {
+              '1st Year': 'bsedenglish1.html',
+              '2nd Year': 'bsedenglish2.html',
+              '3rd Year': 'bsedenglish3.html',
+              '4th Year': 'bsedenglish4.html',
+          },
+          'BSEDMath': {
+              '1st Year': 'bsedmath1.html',
+              '2nd Year': 'bsedmath2.html',
+              '3rd Year': 'bsedmath3.html',
+              '4th Year': 'bsedmath4.html',
+          },
+          'CTP': {
+              '1st Year': 'ctp1.html',
+              '2nd Year': 'ctp2.html',
+              '3rd Year': 'ctp3.html',
+              '4th Year': 'ctp4.html',
+          }
+      };
+
+      // Check if the selected program and year level are valid
+      if (urls[program] && urls[program][yearLevel]) {
+          // Redirect to the appropriate page
+          window.location.href = urls[program][yearLevel];
+      } else {
+          alert("The selected program or year level is not available.");
+      }
+  }
+</script>
+
+      </head>
+      <body>
+ <div class="container">
+          <div class="form-container">
+              <img src="UNIDA CHRISTIAN COLLEGES.png" alt="UCC">
+              <h1 style="color: rgb(0, 102, 0);">Program & Year Level</h1>
+
+              <div class="form-group">
+                <p>Programs:</p>
+                <select id="course" name="programme" required>
+                    <option value="">Select Program</option>
+                    <option value="BEED">Bachelor of Elementary Education (Generalist)</option>
+                    <option value="BSEDSS">Bachelor of Science in Secondary Education Major in Social Studies</option>
+                    <option value="BSEDEnglish">Bachelor of Secondary Education Major in English</option>
+                    <option value="BSEDMath">Bachelor of Secondary Education Major in Mathematics</option>
+                    <option value="BSBAOM">Bachelor of Science in Business Administration Major in Operations Management</option>
+                    <option value="BSBAHRM">Bachelor of Science in Business Administration Major in Human Resource Management</option>
+                    <option value="BSCS">Bachelor of Science in Computer Science</option>
+                    <option value="ACT">Associate in Computer Technology with Specialization in Multimedia Arts</option>
+                    <option value="CTP">Certificate in Teaching Program</option>
+                </select>
+            </div>
+      
+              <div class="form-group">
+                  <p>Year Level:</p>
+                  <select id="year-level" name="year" required>
+                      <option value="">Select Year Level</option>
+                      <option value="1st Year">1st Year</option>
+                      <option value="2nd Year">2nd Year</option>
+                      <option value="3rd Year">3rd Year</option>
+                      <option value="4th Year">4th Year</option>
+                  </select>
+              </div>
+      
+              <button type="button" class="button" onclick="handleSubmit()">
+                  <span>Submit</span>
+              </button>
+          </div>
+      </div>
+   
+      </body>
+      </html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Selection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Pop-Up Modal */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dim background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+}
+
+.popup h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.popup-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.popup-button:hover {
+    background: #0056b3;
+}
+
+/* Hidden Sections */
+.hidden {
+    display: none;
+}
+
+/* Payment Sections */
+#online-payment-section,
+#cash-payment-section {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Payment Options */
+.payment-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pay-button {
+    border: none;
+    border-radius: 5px;
+    cursor: point;
+    transition: background 0.3s ease;
+}
+
+
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+}
+
+form label {
+    font-size: 14px;
+    color: #555;
+}
+
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.checkout-button {
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.checkout-button:hover {
+    background: #0056b3;
+}
+
+/* Cash Payment Section */
+#cash-payment-section p {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .popup-content, 
+    #online-payment-section, 
+    #cash-payment-section {
+        padding: 15px;
+    }
+
+    .popup-button, 
+    .checkout-button, 
+    .pay-button, 
+    .back-button {
+        font-size: 14px;
+        
+    }
+}
+.payment-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+    align-items: center;
+    display: column;
+}
+
+.payment-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Payment Forms */
+.payment-form {
+    display: none;
+    margin-top: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.input-field:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+</style>
+<body>
+    
+    <div id="payment-popup" class="popup">
+        <div class="popup-content">
+            <h3>Select Payment Method</h3>
+            <button class="popup-button" id="online-payment-button">Online Payment</button>
+            <button class="popup-button" id="cash-payment-button">Cash</button>
+        </div>
+    </div>
+
+    <!-- Online Payment Section -->
+    <div id="online-payment-section" class="hidden">
+        
+        <div class="payment-buttons">
+            <button class="payment-btn" id="gcashBtn">
+                <img src="gcash.jpg" alt="GCash" style="height: 30px;">
+            </button>
+            
+            <button class="payment-btn" id="bpiBtn">
+                <img src="BPI.png" alt="BPI" style="height:30px; "></button>
+            <button class="payment-btn" id="bdoBtn">
+                <img src="bdo-l.png" alt="BDO-l" style="height: 30px;">
+            </button>
+            <button class="payment-btn" id="unionBankBtn">
+                <img src="UB.jpg" alt="UB" style="height: 30px;">
+                </button>
+        </div>
+        
+        <div class="payment-form" id="gcashForm">
+            <h3>Gcash Payment</h3>
+            <p>Enter your Gcash details below:</p>
+            <input type="text" class="input-field" placeholder="Mobile Number" required>
+            <button class="submit-btn">Pay with Gcash</button>
+        </div>
+
+        <div class="payment-form" id="bpiForm">
+            <h3>BPI Payment</h3>
+            <p>Enter your BPI details below:</p>
+            <input type="text" class="input-field" placeholder="Account Number" required>
+            <input type="text" class="input-field" placeholder="Account Holder Name" required>
+            <button class="submit-btn">Pay with BPI</button>
+        </div>
+
+        <div class="payment-form" id="bdoForm">
+            <h3>BDO Payment</h3>
+            <p>Enter your BDO details below:</p>
+            <input type="text" class="input-field" placeholder="Account Number" required>
+            <input type="text" class="input-field" placeholder="Account Holder Name" required>
+            <button class="submit-btn">Pay with BDO</button>
+        </div>
+
+        <div class="payment-form" id="unionBankForm">
+            <h3>UnionBank Payment</h3>
+            <p>Enter your UnionBank details below:</p>
+            <input type="text" class="input-field" placeholder="Account Number" required>
+            <input type="text" class="input-field" placeholder="Account Holder Name" required>
+            <button class="submit-btn">Pay with UnionBank</button>
+        </div>
+        <form class="form" id="form">
+            <label>
+                Card holder full name
+                <input type="text" placeholder="Enter your full name">
+            </label>
+            <label>
+                Card Number
+                <input type="text" placeholder="0000 0000 0000 0000" maxlength="19">
+            </label>
+            <div class=" form-row">
+                <label>
+                    Expiry Date
+                    <input type="text" placeholder="01/23" maxlength="5">
+                </label>
+                <label>
+                    CVV
+                    <input type="text" placeholder="CVV" maxlength="3">
+                </label>
+            </div>
+            <button type="submit" class="checkout-button">Proceed to Payment</button>
+        </form>
+    </div>
+
+
+    <div id="cash-payment-section" class="hidden">
+        <h2>Cash Payment</h2>
+        <p>Please prepare the exact cash amount to give at the accounting office at Unida Chritian Colleges.We will give you an update at your gmail account about your enrollment once you are paid. Thank You!</p>
+        <button class="back-button" id="back-button">Done</button>
+    </div>
+
+    <script>document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById('payment-popup');
+        const onlineSection = document.getElementById('online-payment-section');
+        const cashSection = document.getElementById('cash-payment-section');
+        const onlineButton = document.getElementById('online-payment-button');
+        const cashButton = document.getElementById('cash-payment-button');
+        const backButton = document.getElementById('back-button');
+    
+        // Show Online Payment Section
+        onlineButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+            onlineSection.classList.remove('hidden');
+        });
+    
+        // Show Cash Payment Section
+        cashButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+            cashSection.classList.remove('hidden');
+        });
+    
+        // Go Back to Popup
+        backButton.addEventListener('click', () => {
+            cashSection.classList.add('hidden');
+            popup.style.display = 'flex';
+        });
+    // Get buttons and forms
+const gcashBtn = document.getElementById('gcashBtn');
+const bpiBtn = document.getElementById('bpiBtn');
+const bdoBtn = document.getElementById('bdoBtn');
+const unionBtn = document.getElementById('unionBtn');
+
+const gcashForm = document.getElementById('gcashForm');
+const bpiForm = document.getElementById('bpiForm');
+const bdoForm = document.getElementById('bdoForm');
+const unionBankForm = document.getElementById('unionBankForm');
+
+// Function to hide all forms
+function hideAllForms() {
+    gcashForm.style.display = 'none';
+    bpiForm.style.display = 'none';
+    bdoForm.style.display = 'none';
+    unionBankForm.style.display = 'none';
+    form.style.display = 'none';
+}
+
+// Event Listeners for Buttons
+gcashBtn.addEventListener('click', () => {
+    hideAllForms();
+    gcashForm.style.display = 'block';
+});
+
+bpiBtn.addEventListener('click', () => {
+    hideAllForms();
+    bpiForm.style.display = 'block';
+});
+
+bdoBtn.addEventListener('click', () => {
+    hideAllForms();
+    bdoForm.style.display = 'block';
+});
+
+unionBankBtn.addEventListener('click', () => {
+    hideAllForms();
+    unionBankForm.style.display = 'block';
+});
+    })
+
+    </script>
+</body>
+</html>

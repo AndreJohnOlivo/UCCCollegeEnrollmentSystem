@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unida Christian Colleges Enrollment</title>
+    <link rel="icon" type="image/png" href="ucc.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+    
+   <div class="container">
+      <form id="curriculum-form">
+       <img src="UNIDA CHRISTIAN COLLEGES.png" alt="UCC">
+       <h1>Bachelor of Science in Computer Science</h1>
+       <p>Effective AY 2024-2025</p>
+
+    <style>
+    
+      
+      .container {
+        max-width: 700px;
+        width: 100%;
+        background: #ffffff;
+        overflow: scroll;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        display: flex;
+        opacity: 0.9;
+    }
+       .container img {
+            display: block;
+            height: 80px;
+            display: flex;
+            align-self: center;
+            flex-direction: center;
+            margin-bottom: 40px;
+            margin: 0 auto 20px
+            
+            
+        }
+        body {
+            margin-top: 0 auto ;
+            font-family: Arial, sans-serif;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 300vh;
+            background: url(UCC2.jpg) no-repeat center fixed;
+            background-size: cover;
+        }
+        p {
+            text-align: center;
+            color: grey;
+        }
+        table {
+            font-family: Arial, sans-serif;
+            border: 1 px solid dodgerblue;
+            background-color: white;
+            border-collapse: collapse;
+            width: 80%;
+            margin: 40px;
+            opacity: 0.9;
+        }
+        td, th {
+            border: 1px solid green;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        h1{
+          text-align: center;
+          color: rgb(0, 102, 0);
+          font-family: Bell MT;
+        }
+        h2, h3 {
+            text-align: center;
+            color: black;
+            font-family: Bell MT;
+        }
+        button {
+            display:block;
+            margin: 0 auto 20px;
+            border: 1px;
+            width: 100px;
+            height: fit-content;
+            background: goldenrod;
+            border-radius: 10px;
+            font-size:medium;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+        }
+            close-btn{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size:  20px;
+                cursor: pointer;
+                cursor: pointer;
+        }
+        #popover {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+
+        #popover h4 {
+            margin-bottom: 20px;
+          }
+          
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+        #popover button {
+            margin: 0 10px;
+        }
+    </style>
+
+    <h2>FIRST YEAR</h2>
+    <h3>1st Semester</h3>
+
+    <table>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Title</th>
+            <th>Units</th>
+            <th>Take</th>
+        </tr>
+        <tr>
+            <td>GEd Eng 101</td>
+            <td>Purposive Communication</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>UCC 100</td>
+            <td>Christian Formation</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CC 101</td>
+            <td>Introduction to Computing</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CC 102</td>
+            <td>Computer Programming 1</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>GEd Math 101</td>
+            <td>Math in the Modern World</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>SF Elec</td>
+            <td>System Fundamentals</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>Movement Competency Training (MCT)</td>
+            <td>2</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>NSTP 1</td>
+            <td>National Service Training Program 1 - Civic Welfare Training Service</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td><b>TOTAL</b></td>
+            <td></td>
+            <td><b>23</b></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h3>2nd Semester</h3>
+    <table>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Title</th>
+            <th>Units</th>
+            <th>Take</th>
+        </tr>
+        <tr>
+            <td>GEd PhilHis 102</td>
+            <td>Readings in Philippine History</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>GEd SocSci 102</td>
+            <td>Contemporary World</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>Elec WD 101</td>
+            <td>Web Development 1</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CC 103</td>
+            <td>Computer Programming 2</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS IAS 101</td>
+            <td>Information Assurance & Security</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CS HCI 101</td>
+            <td>Human Computer Interaction</td>
+            <td>1</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>PathFit 2</td>
+            <td>Exercise-Based Fitness Activities</td>
+            <td>2</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>NSTP 2</td>
+            <td>National Service Training Program 2 - Civic Welfare Training Service</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td>CSS SDF 104</td>
+            <td>Object-Oriented Programming 2</td>
+            <td>3</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td><b>TOTAL</b></td>
+            <td></td>
+            <td><b>23</b></td>
+            <td></td>
+        </tr>
+    </table>
+   
+    <button id="submit-button">Submit</button>
+
+    <div id="overlay"></div>
+    <div id="popover">
+        <h4>Are you sure about it?</h4>
+        <button id="yes-button">Yes</button>
+        <button id="no-button">No</button>
+    </div>
+  </form>
+</div>
+<script>
+    const submitButton = document.getElementById('submit-button');
+    const popover = document.getElementById('popover');
+    const overlay = document.getElementById('overlay');
+    const yesButton = document.getElementById('yes-button');
+    const noButton = document.getElementById('no-button');
+
+    submitButton.addEventListener('click', () => {
+        popover.style.display = 'block';
+        overlay.style.display = 'block';
+    });
+
+    yesButton.addEventListener('click', () => {
+        window.location.href = 'payment.html';
+    });
+
+    noButton.addEventListener('click', () => {
+        popover.style.display = 'none';
+        overlay.style.display = 'none';
+        alert('You have chosen to stay on this page.');
+    });
+
+    overlay.addEventListener('click', () => {
+        popover.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+ 
+        
+    </script>
+
+</body>
+</html>

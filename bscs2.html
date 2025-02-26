@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unida Christian Colleges Enrollment</title>
+    <link rel="icon" type="image/png" href="ucc.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <form id="enrollment-form">
+  <img src="UNIDA CHRISTIAN COLLEGES.png" alt="UCC">
+    <h1>Bachelor of Science in Computer Science</h1>
+    <p>Effective AY 2024-2025</p>
+    <style>
+    
+      
+      .container {
+        max-width: 700px;
+        width: 100%;
+        background: #ffffff;
+        overflow: scroll;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        display: flex;
+        opacity: 0.9;
+    }
+       .container img {
+            display: block;
+            height: 80px;
+            display: flex;
+            align-self: center;
+            flex-direction: center;
+            margin-bottom: 40px;
+            margin: 0 auto 20px
+            
+            
+        }
+        body {
+            margin-top: 0 auto ;
+            font-family: Arial, sans-serif;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 300vh;
+            background: url(UCC2.jpg) no-repeat center fixed;
+            background-size: cover;
+        }
+        p {
+            text-align: center;
+            color: grey;
+        }
+        table {
+            font-family: Arial, sans-serif;
+            border: 1 px solid dodgerblue;
+            background-color: white;
+            border-collapse: collapse;
+            width: 80%;
+            margin: 40px;
+            opacity: 0.9;
+        }
+        td, th {
+            border: 1px solid green;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        h1{
+          text-align: center;
+          color: rgb(0, 102, 0);
+          font-family: Bell MT;
+        }
+        h2, h3 {
+            text-align: center;
+            color: black;
+            font-family: Bell MT;
+        }
+        button {
+            display:block;
+            margin: 0 auto 20px;
+            border: 1px;
+            width: 100px;
+            height: fit-content;
+            background: goldenrod;
+            border-radius: 10px;
+            font-size:medium;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+        }
+        #popover {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+        #popover button {
+            margin: 0 10px;
+        }
+    </style>
+
+    <h2>SECOND YEAR</h2>
+    <h3>1st Semester</h3>
+    <table>
+      <tr>
+        <th>Course Code</th>
+        <th>Course Title</th>
+        <th>Units</th>
+        <th>Take</th>
+      </tr>
+      <tr>
+        <td>PathFit 3</td>
+        <td>Dance</td>
+        <td>2</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>GEd Elec 102</td>
+        <td>Social Science Philosophy - Gender & Society</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>GEd SocSci 103</td>
+        <td>Science, Technology and Society</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>Elec WD 102</td>
+        <td>Web Development 2</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>CC 104</td>
+        <td>Data Structures and Algorithms</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>GEd Rizal</td>
+        <td>Life and Works of Rizal</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>CS CC 105</td>
+        <td>Information Management</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td><b>TOTAL</b></td>
+        <td></td>
+        <td>20</td>
+        <td></td>
+      </tr>
+    </table>
+
+    <h3>2nd Semester</h3>
+    <table>
+      <tr>
+        <th>Course Code</th>
+        <th>Course Title</th>
+        <th>Units</th>
+        <th>Take</th>
+      </tr>
+      <tr>
+        <td>PathFit 4</td>
+        <td>Sports (Aquatics)</td>
+        <td>2</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>GEd Elec 103</td>
+        <td>Math, Science and Technology - Living in the IT Era</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>GEd SocSci 105</td>
+        <td>Arts Appreciation</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>CS CC 106</td>
+        <td>Application Development and Emerging Technologies</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>CS AL 101</td>
+        <td>Algorithms and Technologies</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>CS SDF 104</td>
+        <td>Object-Oriented Programming 2</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td>CS CC 105</td>
+        <td>Information Management 2</td>
+        <td>3</td>
+        <td><input type="checkbox"></td>
+      </tr>
+      <tr>
+        <td><b>TOTAL</b></td>
+        <td></td>
+        <td>20</td>
+        <td></td>
+      </tr>
+    </table>
+
+    <button popovertarget="submit">
+        Submit
+    </button>
+    
+    <div id="submit" popover>
+      <h4>Are you sure?</h4>
+      <button>Yes</button>
+      <button>No</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
