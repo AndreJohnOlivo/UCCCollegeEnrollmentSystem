@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, url_for, redirect
 from flask_cors import CORS
 import psycopg2
 from configparser import ConfigParser
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='UCCEnrollmentSystemTest/templates', static_folder='UCCEnrollmentSystemTest/static')
 CORS(app)
 
 def config(filename="database.ini", section="postgresql"):
@@ -45,25 +46,50 @@ def index():
 
 @app.route('/students', methods=['POST'])
 def add_student():
-    data = request.json
-    student_number = data.get('student_number')
-    student_name = data.get('student_name')
-    email = data.get('email')
-    phone = data.get('phone')
-    home_address = data.get('home_address')
+    data = request.form
+    firstname = data.get('firstname')
+    middlename = data.get('middlename')
+    surname = data.get('surname')
+    suffix = data.get('suffix')
+    dateofbirth = data.get('dateofbirth')
+    homeaddress = data.get('homeaddress')
+    studenttype = data.get('studenttype')
+    sexatbirth = data.get('sexatbirth')
+    civilstatus = data.get('civilstatus')
+
+    # Debug: Log the received form data
+    print("Received form data:")
+    print(f"First Name: {firstname}, Middle Name: {middlename}, Surname: {surname}, Suffix: {suffix}")
+    print(f"Date of Birth: {dateofbirth}, Home Address: {homeaddress}, Student Type: {studenttype}")
+    print(f"Sex at Birth: {sexatbirth}, Civil Status: {civilstatus}")
+
+    # Check if any required field is missing
+    if not firstname or not surname or not dateofbirth or not homeaddress or not studenttype or not sexatbirth or not civilstatus:
+        print("Error: Missing required fields!")
+        return jsonify({"error": "All fields are required. Please fill in all the fields."}), 400
 
     connection, cursor = connect()
     if connection is None or cursor is None:
         return jsonify({"error": "Database connection failed."}), 500
 
     try:
-        cursor.execute(
-            "INSERT INTO ucccollegerepository (student_number, student_name, email_address, phone_number, home_address) VALUES (%s, %s, %s, %s, %s)",
-            (student_number, student_name, email, phone, home_address)
-        )
+        # Log the attempt to insert data
+        print("Inserting data into the database...")
+
+        cursor.execute(""" 
+            INSERT INTO ucccollegerepository (firstname, middlename, surname, suffix, dateofbirth, homeaddress, studenttype, sexatbirth, civilstatus)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s ,%s)
+        """, (firstname, middlename, surname, suffix, dateofbirth, homeaddress, studenttype, sexatbirth, civilstatus))
+        
         connection.commit()
-        return jsonify({"message": "Added successfully!"}), 201
+
+        print("Data inserted successfully. Redirecting to requirements page...")
+
+        # Redirect to 'requirements.html' page once done
+        return redirect(url_for('requirements'))
+        
     except Exception as error:
+        print(f"Error during database insert: {error}")
         connection.rollback()
         return jsonify({"error": str(error)}), 400
     finally:
@@ -71,20 +97,11 @@ def add_student():
             cursor.close()
         if connection is not None:
             connection.close()
+            print("Database connection closed.")
 
-@app.route('/students', methods=['GET'])
-def get_students():
-    connection, cursor = connect()
-    if connection is None or cursor is None:
-        return jsonify({"error": "Database connection failed."}), 500
-    
-    try:
-        cursor.execute("SELECT * FROM ucccollegerepository ORDER BY student_name ASC")
-        students = cursor.fetchall()
-        return jsonify(students)
-    finally:
-        cursor.close()
-        connection.close()
+@app.route('/requirements')
+def requirements():
+    return render_template('requirements.html')
 
 if __name__ == '__main__':
     from waitress import serve
@@ -96,4 +113,3 @@ if __name__ == '__main__':
 
     print(f"Serving Flask app on http://{host_ip}:{port} (accessible locally and from other devices on the same network)")
     serve(app, host='0.0.0.0', port=port)
-
