@@ -94,12 +94,12 @@
             <h2>Dream High, Aim High, Ambassador!</h2>
 
             <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" id="first-name" placeholder="First Name" required>
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" placeholder="First Name" required>
             </div>
             <div class="form-group">
-                <label for="middle-name">Middle Name</label>
-                <input type="text" id="middle-name" placeholder="Middle Name">
+                <label for="middlename">Middle Name</label>
+                <input type="text" id="middlename" placeholder="Middle Name">
             </div>
             <div class="form-group">
                 <label for="surname">Surname</label>
@@ -110,37 +110,35 @@
                 <input type="text" id="suffix" placeholder="Suffix">
             </div>
             <div class="form-group">
-                <label for="dob">Date of Birth</label>
-                <input type="date" id="dob" required>
+                <label for="dateofbirth">Date of Birth</label>
+                <input type="date" id="dateofbirth" required>
             </div>
             <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" placeholder="Phone Number" required maxlength="11">
+                <label for="phonenumber">Phone</label>
+                <input type="tel" id="phonenumber" placeholder="Phone Number" required maxlength="11">
                 <small id="phone-error" style="color: red; display: none;">Phone number must start with "09" and have exactly 11 digits.</small>
             </div>
             <div class="form-group">
-                <label for="home-address">Home Address</label>
-                <input type="text" id="home-address" placeholder="Home Address" required>
+                <label for="homeaddress">Home Address</label>
+                <input type="text" id="homeaddress" placeholder="Home Address" required>
             </div>
             <div class="form-group">
-                <label for="sex">Sex at Birth</label>
-                <select id="sex" required>
-                    <option value="">Choose your sex at birth</option>
+                <label for="sexatbirth">Sex at Birth</label>
+                <select id="sexatbirth" required>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="civil-status">Civil Status</label>
-                <select id="civil-status" required>
-                    <option value="">Choose your civil status</option>
+                <label for="civilstatus">Civil Status</label>
+                <select id="civilstatus" required>
                     <option value="single">Single</option>
                     <option value="married">Married</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="student-type">Student Type</label>
-                <select id="student-type" required>
+                <label for="studenttype">Student Type</label>
+                <select id="studenttype" required>
                     <option value="">Choose Student Type</option>
                     <option value="New Student">New Student</option>
                     <option value="Transferee">Transferee</option>
@@ -148,25 +146,26 @@
                 </select>
             </div>
 
-            <button type="button" id="next-button" class="button" disabled>Next</button>
+            <button type="button" id="next-button" class="button">Next</button>
         </form>
     </div>
 
     <script>
         const formFields = [
-            document.getElementById('first-name'),
+            document.getElementById('firstname'),
+            document.getElementById('middlename'),
             document.getElementById('surname'),
-            document.getElementById('dob'),
-            document.getElementById('phone'),
-            document.getElementById('home-address'),
-            document.getElementById('sex'),
-            document.getElementById('civil-status'),
-            document.getElementById('student-type')
+            document.getElementById('dateofbirth'),
+            document.getElementById('phonenumber'),
+            document.getElementById('homeaddress'),
+            document.getElementById('sexatbirth'),
+            document.getElementById('civilstatus'),
+            document.getElementById('studenttype')
         ];
-        const phoneInput = document.getElementById('phone');
+        const phoneInput = document.getElementById('phonenumber');
         const phoneError = document.getElementById('phone-error');
         const nextButton = document.getElementById('next-button');
-        const studentTypeSelect = document.getElementById('student-type');
+        const studentTypeSelect = document.getElementById('studenttype');
 
         // Validate phone number
         phoneInput.addEventListener('input', () => {
@@ -185,22 +184,49 @@
         // Validate form
         function validateForm() {
             const isFormValid = formFields.every(field => field.value.trim() !== '') && /^09\d{9}$/.test(phoneInput.value);
-            nextButton.disabled = !isFormValid;
+            console.log('Is form valid', isFormValid);
+            nextButton.disabled = false; // Enable the button regardless of form validity
         }
 
-        formFields.forEach(field => field.addEventListener('input', validateForm));
-
-        // Handle next button click
-        nextButton.addEventListener('click', () => {
-            const studentType = studentTypeSelect.value;
-            if (studentType === 'Transferee') {
-                alert('Please visit the College Department for guidance and an interview.');
-            } else if (studentType === 'New Student') {
-                window.location.href = 'requirements.html';
-            } else {
-                window.location.href = 'requirements.html';
-            }
+        formFields.forEach(field => {
+            console.log(`${field.id}: ${field.value}`);
         });
+
+        // Save form data to the database
+        nextButton.addEventListener('click', () => {
+    const formData = {
+        firstname: document.getElementById('firstname').value,
+        middlename: document.getElementById('middlename').value || null,
+        surname: document.getElementById('surname').value,
+        suffix: document.getElementById('suffix').value || null,
+        dateofbirth: document.getElementById('dateofbirth').value,
+        phonenumber: document.getElementById('phonenumber').value,
+        homeaddress: document.getElementById('homeaddress').value,
+        sexatbirth: document.getElementById('sexatbirth').value,
+        civilstatus: document.getElementById('civilstatus').value,
+        studenttype: document.getElementById('studenttype').value
+    };
+
+    console.log("FormData:", formData); // Debugging line
+
+    fetch('/save_enrollment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Enrollment successful!');
+        } else {
+            alert(`Error: ${data.error}`);
+        }
+    })
+    .catch(error => {
+        console.error('Network Error:', error);
+        alert('Failed to submit enrollment.');
+    });
+});
     </script>
 </body>
 </html>
